@@ -1,0 +1,74 @@
+.navbar {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.navbar-bg-text {
+  font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+  letter-spacing: 0.15em;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 50px !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    top: 8px !important;
+  }
+
+  .hamburger-btn {
+    width: 48px !important;
+    height: 40px !important;
+    padding: 0 !important;
+  }
+
+  .hamburger-btn:not(.is-open) .hamburger-bar-top {
+    top: 12px !important;
+    width: 24px !important;
+  }
+
+  .hamburger-btn:not(.is-open) .hamburger-bar-bottom {
+    bottom: 12px !important;
+    width: 32px !important;
+  }
+
+  .hamburger-bar-top,
+  .hamburger-bar-bottom {
+    height: 3px !important;
+  }
+
+  .buy-now-btn {
+    padding-left: 16px !important;
+    padding-right: 4px !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    gap: 8px !important;
+  }
+
+  .buy-now-btn span.text-black {
+    font-size: 12px !important;
+  }
+
+  .buy-icon-wrap {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .buy-icon-wrap i {
+    font-size: 12px !important;
+  }
+
+  .navbar-links-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 3rem 1rem !important;
+  }
+
+  .navbar-link {
+    font-size: clamp(1.2rem, 6.5vw, 2.5rem) !important;
+  }
+
+  .navbar-bg-text {
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem) !important;
+    letter-spacing: 0.1em !important;
+  }
+}

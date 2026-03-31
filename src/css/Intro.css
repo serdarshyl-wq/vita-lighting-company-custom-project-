@@ -1,0 +1,21 @@
+.intro-text-bg {
+  opacity: 0.5;
+}
+
+.intro-text-fg {
+  clip-path: inset(0 100% 0 0);
+}
+
+.intro-bar-fill {
+  width: 0%;
+}
+
+.intro-text-bg,
+.intro-text-fg {
+  font-family: var(--font-logo);
+  font-size: clamp(4.5rem, 2rem + 8vw, 12rem);
+}
+
+.intro-bar-track {
+  width: clamp(180px, 120px + 18vw, 400px);
+}
