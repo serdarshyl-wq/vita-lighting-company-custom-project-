@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,10 +10,14 @@ import Hero from './components/Hero';
 import Products from './components/Products';
 import Footer from './components/Footer';
 import CustomAlert from './components/CustomAlert';
+import AllCollection from './pages/AllCollection';
+import ProductDetail from './pages/ProductDetail';
+import Success from './pages/Success';
+import Fail from './pages/Fail';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function App() {
+function HomePage() {
   const navbarRef = useRef(null);
   const logoRef = useRef(null);
   const scrollbarThumbRef = useRef(null);
@@ -116,6 +121,20 @@ function App() {
         />
       </div>
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/collection" element={<AllCollection />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/fail" element={<Fail />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

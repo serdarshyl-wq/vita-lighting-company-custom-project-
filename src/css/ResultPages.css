@@ -1,0 +1,285 @@
+/* Shared styles for Success and Fail pages */
+
+.rp-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+/* Top bar */
+.rp-topbar {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.rp-brand {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Content area — grows to fill remaining height */
+.rp-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 2rem 6rem;
+  max-width: 540px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+/* Icon circle */
+.rp-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.rp-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.rp-icon--success {
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1.5px solid #bbf7d0;
+}
+
+.rp-icon--fail {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1.5px solid #fecaca;
+}
+
+/* Text */
+.rp-title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.rp-subtitle {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  opacity: 0.55;
+  max-width: 400px;
+}
+
+/* Order meta (success only) */
+.rp-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  background-color: #f9fafb;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.rp-meta-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.4;
+}
+
+.rp-meta-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+/* Reason box (fail only) */
+.rp-reason {
+  padding: 0.8rem 1.4rem;
+  border-radius: 0.75rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.rp-reason-text {
+  font-size: 0.85rem;
+  color: #991b1b;
+  line-height: 1.5;
+}
+
+/* Invoice block */
+.rp-invoice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.rp-invoice-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  opacity: 0.5;
+}
+
+.rp-btn--invoice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #1a1a1a;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  transition: border-color 0.2s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+
+.rp-btn--invoice svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.rp-btn--invoice:hover {
+  border-color: #1a1a1a;
+  transform: translateY(-1px);
+}
+
+/* Buttons */
+.rp-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 280px;
+}
+
+.rp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.95rem 2rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.25s ease, transform 0.15s ease, border-color 0.25s ease;
+}
+
+.rp-btn:hover {
+  transform: translateY(-1px);
+}
+
+.rp-btn:active {
+  transform: translateY(0);
+}
+
+.rp-btn--primary {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.rp-btn--primary:hover {
+  background-color: #333333;
+}
+
+.rp-btn--secondary {
+  background: transparent;
+  color: #1a1a1a;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.rp-btn--secondary:hover {
+  border-color: #1a1a1a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rp-topbar {
+    padding: 1rem 1.25rem;
+  }
+
+  .rp-content {
+    padding: 3rem 1.5rem 4rem;
+    gap: 1.25rem;
+  }
+
+  .rp-title {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  .rp-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .rp-actions {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .rp-btn--invoice {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .rp-content {
+    padding: 2.5rem 1.25rem 3.5rem;
+    gap: 1rem;
+  }
+
+  .rp-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .rp-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .rp-meta {
+    flex-direction: column;
+    gap: 0.3rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .rp-reason {
+    width: 100%;
+    text-align: left;
+  }
+
+  .rp-btn,
+  .rp-btn--invoice {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.78rem;
+  }
+}

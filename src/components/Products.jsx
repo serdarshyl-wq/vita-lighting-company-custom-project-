@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import { useProductIds } from '../hooks/useProductIds';
 import '../css/Products.css';
 
 const products = [
@@ -12,6 +13,7 @@ const products = [
 ];
 
 function Products() {
+    const { getIdByName } = useProductIds();
     const [isDark, setIsDark] = useState(false);
     const gridRef = useRef(null);
     const sectionRef = useRef(null);
@@ -26,7 +28,6 @@ function Products() {
                 const entry = entries[0];
                 if (entry.isIntersecting && !hasAnimated.current) {
                     hasAnimated.current = true;
-
                     gsap.to(Array.from(cards), {
                         opacity: 1,
                         y: 0,
@@ -69,7 +70,15 @@ function Products() {
                     ref={gridRef}
                 >
                     {products.map((product) => (
-                        <div key={product.id} className="product-card">
+                        <div
+                            key={product.id}
+                            className="product-card"
+                            style={{ cursor: getIdByName(product.name) ? 'pointer' : 'default' }}
+                            onClick={() => {
+                                const realId = getIdByName(product.name);
+                                if (realId) window.open(`/product/${realId}`, '_blank');
+                            }}
+                        >
                             <div className="product-img-wrapper">
                                 <img
                                     src={`/products/ürün${product.id}-off.png`}
@@ -90,10 +99,13 @@ function Products() {
                     ))}
 
                     <div className="product-card col-span-2 md:col-span-3 flex justify-center mt-8 mb-4">
-                        <button className={`group flex items-center gap-3 px-8 py-3.5 rounded-full text-sm font-medium tracking-0.1em uppercase transition-colors duration-300 ${isDark
-                            ? 'bg-white text-black hover:bg-neutral-200'
-                            : 'bg-black text-white hover:bg-neutral-800'
-                            }`}>
+                        <button
+                            onClick={() => { window.open('/collection', '_blank'); }}
+                            className={`group flex items-center gap-3 px-8 py-3.5 rounded-full text-sm font-medium tracking-0.1em uppercase transition-colors duration-300 ${isDark
+                                ? 'bg-white text-black hover:bg-neutral-200'
+                                : 'bg-black text-white hover:bg-neutral-800'
+                            }`}
+                        >
                             View All Collection
                             <i className="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1" />
                         </button>

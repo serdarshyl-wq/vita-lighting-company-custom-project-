@@ -8,8 +8,8 @@ gsap.registerPlugin(ScrollTrigger);
 const slides = [
     {
         image: '/products/ürün4-on.png',
-        title: 'Helix',
-        description: 'A sculptural helix lamp blending ambient warmth with modern design',
+        title: 'LUX',
+        description: 'A sculptural lux lamp blending ambient warmth with modern design',
     },
     {
         image: '/products/ürün1-on.png',
