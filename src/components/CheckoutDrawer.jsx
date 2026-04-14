@@ -11,18 +11,14 @@ function CheckoutDrawer({ isOpen, onClose, product }) {
     const [formError, setFormError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    const overlayRef  = useRef(null);
-    const drawerRef   = useRef(null);
-    const didMount    = useRef(false);
+    const overlayRef     = useRef(null);
+    const drawerRef      = useRef(null);
+    const hasBeenOpened  = useRef(false);
 
     /* ── Animation ── */
     useEffect(() => {
-        if (!didMount.current) {
-            didMount.current = true;
-            return;
-        }
-
         if (isOpen) {
+            hasBeenOpened.current = true;
             document.body.style.overflow = 'hidden';
             setForm(EMPTY);
             setFormError(null);
@@ -36,7 +32,7 @@ function CheckoutDrawer({ isOpen, onClose, product }) {
                 { x: '100%' },
                 { x: '0%', duration: 0.48, ease: 'power3.out', delay: 0.04 }
             );
-        } else {
+        } else if (hasBeenOpened.current) {
             gsap.to(drawerRef.current,
                 { x: '100%', duration: 0.38, ease: 'power3.in' }
             );
