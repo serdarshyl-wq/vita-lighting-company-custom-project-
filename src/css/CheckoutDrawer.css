@@ -104,6 +104,35 @@
   margin: 0 2rem;
 }
 
+/* ── Autofill button ── */
+.cd-autofill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  align-self: flex-start;
+  background: none;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.72rem;
+  font-family: inherit;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.cd-autofill-btn svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.cd-autofill-btn:hover {
+  border-color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.75);
+}
+
 /* ── Form ── */
 .cd-form {
   display: flex;

@@ -109,7 +109,7 @@ function HomePage() {
       <Products />
       <Footer />
       <Logo ref={logoRef} />
-      <CustomAlert />
+      <CustomAlert trigger={introComplete} />
 
       <div
         className={`fixed top-0 right-0 w-[6px] h-full z-9999 pointer-events-none mix-blend-difference transition-opacity duration-1000ms ease-out ${showScrollbar ? 'opacity-100' : 'opacity-0'}`}

@@ -25,11 +25,12 @@
   padding: 16px 20px;
   border-radius: 12px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(0, 0, 0, 0.1);
   min-width: 340px;
+  max-width: 480px;
 }
 
 .custom-alert-icon {
@@ -47,9 +48,10 @@
 
 .custom-alert-content p {
   margin: 4px 0 0 0;
-  font-size: 14px;
+  font-size: 13px;
   color: #555;
-  white-space: nowrap;
+  white-space: normal;
+  line-height: 1.5;
 }
 
 .custom-alert-close {

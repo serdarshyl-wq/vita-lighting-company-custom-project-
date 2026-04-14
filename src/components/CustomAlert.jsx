@@ -1,33 +1,37 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../css/CustomAlert.css';
 
-function CustomAlert() {
-    const [showAlert, setShowAlert] = useState(false);
+const MESSAGE = 'Test ortamındasınız. Başarılı bir ödeme denemesi için 4603 4500 0000 0000 (Visa) numaralı Iyzico test kartını kullanabilirsiniz. SKT için rastgele geçerli bir numara ve CVV için "123" rakamlarını girebilirsiniz.';
 
+function CustomAlert({ trigger }) {
+    const [showAlert, setShowAlert] = useState(false);
+    const hideTimer = useRef(null);
+
+    const show = (duration = 7000) => {
+        if (hideTimer.current) clearTimeout(hideTimer.current);
+        setShowAlert(false);
+        setTimeout(() => setShowAlert(true), 50);
+        hideTimer.current = setTimeout(() => setShowAlert(false), duration);
+    };
+
+    // Intro tamamlandığında otomatik aç
+    useEffect(() => {
+        if (!trigger) return;
+        const t = setTimeout(() => show(9000), 400);
+        return () => clearTimeout(t);
+    }, [trigger]);
+
+    // href="#" veya buy-now-btn tıklamalarında aç
     useEffect(() => {
         const handleClick = (e) => {
-            // Find the closest anchor tag or element with a buy-now-btn class
             const target = e.target.closest('a') || e.target.closest('.buy-now-btn');
-            
-            if (target) {
-                const href = target.getAttribute('href');
-                // Intercept any placeholder links (href="#") or the buy-now button
-                if (href === '#' || target.classList.contains('buy-now-btn')) {
-                    e.preventDefault();
-                    
-                    // Reset animation correctly if clicked multiple times rapidly
-                    setShowAlert(false);
-                    setTimeout(() => setShowAlert(true), 50);
-                    
-                    // Auto hide after 4 seconds
-                    setTimeout(() => {
-                        setShowAlert(false);
-                    }, 4000);
-                }
+            if (!target) return;
+            const href = target.getAttribute('href');
+            if (href === '#' || target.classList.contains('buy-now-btn')) {
+                e.preventDefault();
+                show(7000);
             }
         };
-
-        // Use capture phase to ensure we catch it before any other library ignores it
         document.addEventListener('click', handleClick, true);
         return () => document.removeEventListener('click', handleClick, true);
     }, []);
@@ -35,13 +39,13 @@ function CustomAlert() {
     return (
         <div className={`custom-alert-overlay ${showAlert ? 'active' : ''}`}>
             <div className="custom-alert-box">
-                <i className="fa-solid fa-circle-info custom-alert-icon"></i>
+                <i className="fa-solid fa-credit-card custom-alert-icon" />
                 <div className="custom-alert-content">
-                    <h4>Notice</h4>
-                    <p>This is a custom design showcase.<br className="md:hidden" /> No real purchases can be made.</p>
+                    <h4>Test Ortamı</h4>
+                    <p>{MESSAGE}</p>
                 </div>
-                <button className="custom-alert-close" onClick={() => setShowAlert(false)} aria-label="Close">
-                    <i className="fa-solid fa-xmark"></i>
+                <button className="custom-alert-close" onClick={() => setShowAlert(false)} aria-label="Kapat">
+                    <i className="fa-solid fa-xmark" />
                 </button>
             </div>
         </div>

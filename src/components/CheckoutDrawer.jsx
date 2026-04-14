@@ -7,13 +7,13 @@ const PAYMENT_URL = 'https://api.vitalamps.online/create_payment.php';
 const EMPTY = { name: '', surname: '', phone: '', email: '', address: '', tcNumber: '' };
 
 function CheckoutDrawer({ isOpen, onClose, product }) {
-    const [form, setForm]         = useState(EMPTY);
+    const [form, setForm] = useState(EMPTY);
     const [formError, setFormError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    const overlayRef     = useRef(null);
-    const drawerRef      = useRef(null);
-    const hasBeenOpened  = useRef(false);
+    const overlayRef = useRef(null);
+    const drawerRef = useRef(null);
+    const hasBeenOpened = useRef(false);
 
     /* ── Animation ── */
     useEffect(() => {
@@ -79,13 +79,13 @@ function CheckoutDrawer({ isOpen, onClose, product }) {
 
         try {
             const res = await axios.post(PAYMENT_URL, {
-                id:      product.product_id,
-                price:   product.price,
-                name:    name.trim(),
+                id: product.product_id,
+                price: product.price,
+                name: name.trim(),
                 surname: surname.trim(),
-                phone:   phone.trim(),
-                email:   email.trim(),
-                address:  address.trim(),
+                phone: phone.trim(),
+                email: email.trim(),
+                address: address.trim(),
                 tcNumber: tcNumber.trim(),
             });
 
@@ -101,8 +101,8 @@ function CheckoutDrawer({ isOpen, onClose, product }) {
         }
     };
 
-    const price    = product?.price ? parseFloat(product.price).toFixed(2) : '—';
-    const priceTL  = product?.price ? (parseFloat(product.price) * 33.50).toFixed(2) : '—';
+    const price = product?.price ? parseFloat(product.price).toFixed(2) : '—';
+    const priceTL = product?.price ? (parseFloat(product.price) * 44.72).toFixed(2) : '—';
 
     return (
         <>
@@ -135,13 +135,32 @@ function CheckoutDrawer({ isOpen, onClose, product }) {
                     <span className="cd-price-usd">${price}</span>
                     <span className="cd-price-sep">·</span>
                     <span className="cd-price-tl">≈ ₺{priceTL}</span>
-                    <span className="cd-price-note">(1$ = 33.50 TL)</span>
+                    <span className="cd-price-note">(1$ = 44.72 TL)</span>
                 </div>
 
                 <div className="cd-divider" />
 
                 {/* Form */}
                 <form className="cd-form" onSubmit={handleSubmit} noValidate>
+                    <button
+                        type="button"
+                        className="cd-autofill-btn"
+                        onClick={() => setForm({
+                            name: 'VITA',
+                            surname: 'Müşterisi',
+                            phone: '05001234567',
+                            email: 'test@vitalamps.online',
+                            address: 'Bağcılar Mah. Vita Sokak No:1 D:1, Bağcılar / İstanbul',
+                            tcNumber: '11111111111',
+                        })}
+                    >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M12 20h9" />
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                        </svg>
+                        Test Verisi ile Doldur
+                    </button>
+
                     <div className="cd-row">
                         <div className="cd-field">
                             <label className="cd-label">Ad</label>

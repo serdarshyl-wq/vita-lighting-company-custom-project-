@@ -47,10 +47,21 @@ const Navbar = forwardRef(function Navbar(props, ref) {
                 <div className="navbar-links-grid w-full max-w-7xl grid grid-cols-3 gap-x-4 gap-y-10 md:gap-y-16 text-black sm:text-5xl lg:text-6xl font-semibold tracking-tighter z-10 relative">
                     {['About', 'Inspire', 'Collection', 'Best Sellers', 'Extras', 'Services'].map((item) => (
                         <div key={item} className="w-full flex justify-center items-center">
-                            <a href="#" className="navbar-link inline-block group relative leading-tight pb-2">
-                                {item}
-                                <span className="absolute left-0 bottom-0 w-full h-[3px] md:h-[6px] bg-black origin-left scale-x-0 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100" />
-                            </a>
+                            {item === 'Collection' ? (
+                                <a
+                                    href="/collection"
+                                    onClick={(e) => { e.preventDefault(); window.open('/collection', '_blank'); setIsMenuOpen(false); }}
+                                    className="navbar-link inline-block group relative leading-tight pb-2"
+                                >
+                                    {item}
+                                    <span className="absolute left-0 bottom-0 w-full h-[3px] md:h-[6px] bg-black origin-left scale-x-0 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100" />
+                                </a>
+                            ) : (
+                                <a href="#" className="navbar-link inline-block group relative leading-tight pb-2">
+                                    {item}
+                                    <span className="absolute left-0 bottom-0 w-full h-[3px] md:h-[6px] bg-black origin-left scale-x-0 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-x-100" />
+                                </a>
+                            )}
                         </div>
                     ))}
                 </div>
